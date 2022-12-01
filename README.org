@@ -1,15 +1,14 @@
 * Fall 2022 - Lab 11
 
-* Last name:
+* Last name: Mahid
 
-* First name:
+* First name: Ishraq
 
-* GitHub username:
+* GitHub username: turtlelazy
 
 * Notes:
 
 
-  
 * General instructions:
 - Fill in your name and GitHub username on top.
 - Use the Notes section to add any notes to the instructor.
