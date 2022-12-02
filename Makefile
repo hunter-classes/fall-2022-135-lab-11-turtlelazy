@@ -18,4 +18,4 @@ tests.o: tests.cpp doctest.h funcs.h profile.h
 	g++ -c -std=c++11 tests.cpp
 
 clean:
-	rm -f main.o funcs.o tests.o profile.o main tests
+	rm -f main.o funcs.o tests.o profile.o network.o main tests

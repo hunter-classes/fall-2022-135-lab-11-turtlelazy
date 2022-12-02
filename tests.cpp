@@ -32,3 +32,20 @@ TEST_CASE("TASK B"){
 
     CHECK(!nw.addUser("yoshi", "Yoshi")); // false (0)
 }
+
+TEST_CASE("TASK C"){
+    Network nw;
+    nw.addUser("mario", "Mario");
+    nw.addUser("luigi", "Luigi");
+    nw.addUser("yoshi", "Yoshi");
+    CHECK(nw.follow("mario", "luigi"));
+
+    CHECK(nw.follow("mario", "yoshi"));
+    CHECK(nw.follow("luigi", "mario"));
+    CHECK(nw.follow("luigi", "yoshi"));
+    CHECK(nw.follow("yoshi", "mario"));
+    CHECK(nw.follow("yoshi", "luigi"));
+    CHECK(!nw.follow("WARIO", "yoshi"));
+    CHECK(!nw.follow("yoshi", "WARIO"));
+    CHECK(!nw.follow("WARIO", "ZARIO"));
+}
