@@ -14,6 +14,7 @@ int Network::findID(std::string usrn){
 
 Network::Network(){
     numUsers = 0;
+    numPosts = 0;
     for(int r = 0; r < MAX_USERS; r++){
         for(int c = 0; c < MAX_USERS; c++){
             following[r][c] = false;
@@ -80,4 +81,35 @@ void Network::printDot(){
         }
     }
     std::cout << "}\n";
+}
+
+bool Network::writePost(std::string usrn, std::string msg){
+    if(findID(usrn) != -1 && numPosts < MAX_POSTS){
+        posts[numPosts].message = msg;
+        posts[numPosts].username = usrn;
+        numPosts += 1;
+        return true;
+    }
+    return false;
+}
+
+std::string messageDisplay(std::string msg,std::string fullname){
+    return fullname + ": " + msg;
+}
+
+bool Network::printTimeline(std::string usrn){
+    int user_ID = findID(usrn);
+    if(user_ID == -1){
+        return false;
+    }
+    for(int i = numPosts-1; i >= 0; i--){
+        Post current_post = posts[i];
+        int post_userID = findID(current_post.username);
+        //std::cout << post_userID << " " << current_post.username  <<"\n";
+        Profile post_profile = profiles[post_userID];
+        if (following[user_ID][post_userID] || post_profile.getUsername() == usrn){
+            std::cout << messageDisplay(current_post.message,post_profile.getFullName()) << "\n";
+        }
+    }
+    return true;
 }

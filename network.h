@@ -1,9 +1,20 @@
 #pragma once
 #include "profile.h"
 #include <string>
+
+struct Post
+{
+    std::string username;
+    std::string message;
+};
+
 class Network
 {
 private:
+    static const int MAX_POSTS = 100;
+    int numPosts;          // number of posts
+    Post posts[MAX_POSTS]; // array of all posts
+
     static const int MAX_USERS = 20; // max number of user profiles
     int numUsers;                    // number of registered users
     Profile profiles[MAX_USERS];     // user profiles array:
@@ -15,6 +26,11 @@ private:
     bool following[MAX_USERS][MAX_USERS];
 
 public:
+    // Add a new post
+    bool writePost(std::string usrn, std::string msg);
+    // Print user's "timeline"
+    bool printTimeline(std::string usrn);
+
     // Constructor, makes an empty network (numUsers = 0)
     Network();
     // Attempts to sign up a new user with specified username and displayname

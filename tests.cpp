@@ -49,3 +49,15 @@ TEST_CASE("TASK C"){
     CHECK(!nw.follow("yoshi", "WARIO"));
     CHECK(!nw.follow("WARIO", "ZARIO"));
 }
+
+TEST_CASE("TASK D"){
+    Network nw;
+    nw.addUser("mario", "Mario");
+    nw.addUser("luigi", "Luigi");
+    nw.addUser("yoshi", "Yoshi");
+    CHECK(nw.writePost("mario", "It's a-me, Mario!"));
+    CHECK(nw.writePost("luigi", "Hey hey!"));
+    CHECK(!nw.writePost("bobbity", "SHOULD NOT WORK"));
+    // CHECK(nw.printTimeline("mario"));
+    CHECK(!nw.printTimeline("bobbity"));
+}
